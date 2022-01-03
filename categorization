@@ -71,4 +71,24 @@ label_X_valid[good_label_cols] = ordinal_encoder.transform(X_valid[good_label_co
 print("MAE from Approach 2 (Ordinal Encoding):") 
 print(score_dataset(label_X_train, label_X_valid, y_train, y_valid))
 
+#investigating cardinality
+
+# Get number of unique entries in each column with categorical data
+object_nunique = list(map(lambda col: X_train[col].nunique(), object_cols))
+d = dict(zip(object_cols, object_nunique))
+
+# Print number of unique entries by column, in ascending order
+sorted(d.items(), key=lambda x: x[1])
+
+#ONE HOT ENCOIDNG 
+# How many entries are added to the dataset by
+# replacing the column with a one-hot encoding?
+OH_entries_added = 1e4*100 - 1e4
+
+# How many entries are added to the dataset by
+# replacing the column with an ordinal encoding?
+label_entries_added = 0
+
+
+
 
